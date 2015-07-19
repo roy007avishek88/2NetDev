@@ -86,7 +86,14 @@ if (runlocal == true) {
 } else {
 	pubkey = process.env.PUBKey || '';
 	privkey = process.env.PRIVKey || '';
+	
+	console.log('pubkey------------>'+pubkey);
+	console.log('privkey------------>'+privkey);
 }
+console.log('qcEndpoint------------>'+qcEndpoint);
+console.log('qcKey------------>'+qcKey);
+console.log('qcSecret------------>'+qcSecret);
+console.log('jwtSecret------------>'+jwtSecret);
 
 var pgcryptoinsert = 'INSERT INTO "Qualcomm".oauth("org_id", "refresh_token", "client_id", "client_secret") '
 	+ 'SELECT vals.org_id, pgp_pub_encrypt(vals.refresh_token, keys.pubkey) as refresh_token, '
